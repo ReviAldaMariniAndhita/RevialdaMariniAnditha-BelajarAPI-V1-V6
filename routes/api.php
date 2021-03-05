@@ -13,6 +13,20 @@ use App\models\kategoripengumuman;
 use Illuminate\Support\Facades\Route;
 
 
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'App\Http\Controllers\AuthApiController@login');
+    Route::post('logout', 'App\Http\Controllers\AuthApiController@logout');
+    Route::post('refresh', 'App\Http\Controllers\AuthApiController@refresh');
+    Route::post('me', 'App\Http\Controllers\AuthApiController@me');
+
+});
 /*
 |--------------------------------------------------------------------------
 | API Routes
